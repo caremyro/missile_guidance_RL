@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
 
-model = PPO.load("missile_ppo")
+model = PPO.load("missile_ppo_v3")
 env   = MissileEnv()
 
 missile_positions = []
