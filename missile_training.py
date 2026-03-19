@@ -13,7 +13,7 @@ checkpoint_callback = CheckpointCallback(
 )
 
 
-model = PPO("MlpPolicy", env, verbose=1, learning_rate=3e-4) #learning_rate=3e-4 -> the default for PPO
+model = PPO("MlpPolicy", env, verbose=1, learning_rate=3e-4, tensorboard_log="./logs/") #learning_rate=3e-4 -> the default for PPO
 model.learn(total_timesteps=1_000_000)
 model.save("missile_ppo")
 print("Training done")
