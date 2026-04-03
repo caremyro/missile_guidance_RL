@@ -91,6 +91,11 @@ class MissileEnv(gym.Env):
         if self.t > 0:
             self.aircraft_vel = (np.array([x, y, z]) - self.aircraft_pos) / self.dt
 
+        if np.random.random() < 0.02:  # 2% chance of noise
+            perturbation = np.random.uniform(-150, 150, 3)
+            perturbation[2] *= 0.3 # less vertical noise
+            self.aircraft_vel += perturbation
+            self.aircraft_vel = self.aircraft_vel / np.linalg.norm(self.aircraft_vel) * self.targ_vel
 
         return np.array([x, y, z])
 
